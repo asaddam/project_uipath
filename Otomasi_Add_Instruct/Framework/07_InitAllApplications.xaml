@@ -1,0 +1,176 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="InitAllApplications_2" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:aw="clr-namespace:Alphabet.Workflow;assembly=GetXamlFileNameActivity" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:xl="clr-namespace:XAS_Custom.Logging;assembly=XAS_Package">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Nama Project" Name="in_strProjectName" Type="InArgument(x:String)" />
+    <x:Property Name="in_dictConfigMail" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_boolUnattended" Type="InArgument(x:Boolean)" />
+    <x:Property Name="out_strPathFileReportHarian" Type="OutArgument(x:String)" />
+    <x:Property Name="out_dtQueue" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="in_dictConfigUser" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_dictConfigAsset" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_dictConfigIT" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="io_secPwdMyD" Type="InOutArgument(ss:SecureString)" />
+    <x:Property Name="io_strUserMyD" Type="InOutArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1459,1766</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>InitAllApplications_2_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="31">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>Alphabet.Workflow</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>XAS_Custom.Logging</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="54">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>GetXamlFileNameActivity</AssemblyReference>
+      <AssemblyReference>XAS_Package</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="InitAllApplications_2" sap:VirtualizedContainerService.HintSize="621,1701" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strXamlName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <aw:GetXamlFileName DisplayName="Get xaml file name" sap:VirtualizedContainerService.HintSize="579,22" sap2010:WorkflowViewState.IdRef="GetXamlFileName_1" workflowName="[strXamlName]" />
+    <xl:Write_Log DisplayName="Write Log Init All App Start" sap:VirtualizedContainerService.HintSize="579,22" sap2010:WorkflowViewState.IdRef="Write_Log_1" LogType="Info" Message="[strXamlName +&quot; : Start&quot;]" ProjectName="[in_strProjectName]" />
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_dictconfigAsset(&quot;Credential_MyD&quot;).ToString]" DisplayName="Get Credential User Pass MyD" sap:VirtualizedContainerService.HintSize="579,22" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[io_secPwdMyD]" Username="[io_strUserMyD]" />
+    <If Condition="[Not (&#xA;System.IO.File.Exists(path.Combine(in_dictconfigUser(&quot;Path_Master&quot;).ToString,in_dictconfigIT(&quot;FileMaster&quot;).ToString)) And &#xA;System.IO.File.Exists(path.Combine(in_dictconfigUser(&quot;Path_Master&quot;).ToString,in_dictconfigIT(&quot;FileReport&quot;).ToString))&#xA;)]" DisplayName="If cek file Master dan Report" sap:VirtualizedContainerService.HintSize="579,480" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,328" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <xl:Write_Log DisplayName="Write Log File Master Tidak " sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Write_Log_3" LogType="Info" Message="[strXamlName +&quot; : File Master Tidak Ditemukan&quot;]" ProjectName="[in_strProjectName]" />
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SendEmailNotification workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Reusable\SendEmailNotification.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strProjectName">[in_strProjectName]</InArgument>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolUnattended">[in_boolUnattended]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfigIT">[in_dictConfigIT]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strSubjectEmail">[in_dictConfigMail("Subject MasterNotFound").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strToEmail">[in_dictConfigMail("To MasterNotFound").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strCcEmail">[in_dictConfigMail("Cc MasterNotFound").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strBodyEmail">[in_dictConfigMail("Body MasterNotFound").ToString]</InArgument>
+              <InArgument x:TypeArguments="scg:IEnumerable(x:String)" x:Key="in_arrAttachMail" />
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <Throw DisplayName="Throw File Master Tidak Ditemukan" Exception="[new BusinessRuleException(&quot;File Master Tidak Ditemukan&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        </Sequence>
+      </If.Then>
+    </If>
+    <If Condition="[not System.IO.File.Exists(path.Combine(in_dictconfigUser(&quot;Path_To_Do&quot;).ToString,path.GetFileNameWithoutExtension(in_dictconfigIT(&quot;FileReport&quot;).ToString)+&quot; - &quot;+datetime.now.ToString(&quot;ddMMyyyy&quot;)+path.GetExtension(in_dictconfigIT(&quot;FileReport&quot;).ToString)))]" DisplayName="If Cek File Todo " sap:VirtualizedContainerService.HintSize="579,305" sap2010:WorkflowViewState.IdRef="If_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <ui:CopyFile ContinueOnError="{x:Null}" Destination="[path.Combine(in_dictconfigUser(&quot;Path_To_Do&quot;).ToString,path.GetFileNameWithoutExtension(in_dictconfigIT(&quot;FileReport&quot;).ToString)+&quot; - &quot;+datetime.now.ToString(&quot;ddMMyyyy&quot;)+path.GetExtension(in_dictconfigIT(&quot;FileReport&quot;).ToString))]" DisplayName="Copy File Report Todo" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="False" Path="[path.Combine(in_dictconfigUser(&quot;Path_Master&quot;).ToString,in_dictconfigIT(&quot;FileReport&quot;).ToString)]" />
+      </If.Then>
+    </If>
+    <Assign DisplayName="Assign Var File Input Report Harian" sap:VirtualizedContainerService.HintSize="579,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_strPathFileReportHarian]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[path.Combine(in_dictconfigUser("Path_To_Do").ToString,path.GetFileNameWithoutExtension(in_dictconfigIT("FileReport").ToString)+" - "+datetime.now.ToString("ddMMyyyy")+path.GetExtension(in_dictconfigIT("FileReport").ToString))]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Sequence DisplayName="Sequence Build Dt Queue" sap:VirtualizedContainerService.HintSize="579,213" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:BuildDataTable DataTable="[out_dtQueue]" DisplayName="Build Data Table Queue" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Column1&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Column2&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{path.GetFileName(out_strPathFileReportHarian)}]" DataTable="[out_dtQueue]" DisplayName="Add Data Row Queue" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+    </Sequence>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke FFL_Login_myDevelopment workflow" sap:VirtualizedContainerService.HintSize="579,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="FFL\FFL_Login_myDevelopment.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfigUser">[in_dictConfigUser]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strProjectName">[in_strProjectName]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfigIT">[in_dictConfigIT]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strUserOrches">[io_strUserMyD]</InArgument>
+        <InArgument x:TypeArguments="ss:SecureString" x:Key="in_secPassOrches">[io_secPwdMyD]</InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolUnattended">[in_boolUnattended]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfigMail">[in_dictConfigMail]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <xl:Write_Log DisplayName="Write Log Init All App End" sap:VirtualizedContainerService.HintSize="579,22" sap2010:WorkflowViewState.IdRef="Write_Log_2" LogType="Info" Message="[strXamlName +&quot; : End&quot;]" ProjectName="[in_strProjectName]" />
+  </Sequence>
+</Activity>

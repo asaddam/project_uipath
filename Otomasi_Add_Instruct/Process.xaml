@@ -1,0 +1,673 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:aw="clr-namespace:Alphabet.Workflow;assembly=GetXamlFileNameActivity" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:xl="clr-namespace:XAS_Custom.Logging;assembly=XAS_Package" xmlns:xr="clr-namespace:XAS_Reusable_Package.Reusable_Code;assembly=XAS Reusable Package">
+  <x:Members>
+    <x:Property Name="in_dictConfigIT" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_dictConfigUser" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_dictConfigMailIT" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_dictConfigMail" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="io_dictConfigGlobalHandler" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_strProjectName" Type="InArgument(x:String)" />
+    <x:Property Name="in_strPathFileReportHarian" Type="InArgument(x:String)" />
+    <x:Property Name="in_strUserOrches" Type="InArgument(x:String)" />
+    <x:Property Name="in_secPassOrches" Type="InArgument(ss:SecureString)" />
+    <x:Property Name="in_boolUnattended" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_dictConfigAsset" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1459,9627</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Process_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="39">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Alphabet.Workflow</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>XAS_Custom.Logging</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>XAS_Reusable_Package.Reusable_Code</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="68">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>GetXamlFileNameActivity</AssemblyReference>
+      <AssemblyReference>XAS_Package</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>XAS Reusable Package_Expressions_10232056</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="967,9562" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strXamlName" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtReportHarian" />
+      <Variable x:TypeArguments="ui:WorkbookApplication" Name="wbReportHarian" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtMasterMappingTTT" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtMasterAddATT" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <aw:GetXamlFileName DisplayName="Get xaml file name" sap:VirtualizedContainerService.HintSize="925,22" sap2010:WorkflowViewState.IdRef="GetXamlFileName_1" workflowName="[strXamlName]" />
+    <xl:Write_Log DisplayName="Write Log Prosess Start" sap:VirtualizedContainerService.HintSize="925,22" sap2010:WorkflowViewState.IdRef="Write_Log_1" LogType="Info" Message="[strXamlName +&quot; : Start&quot;]" ProjectName="[in_strProjectName]" />
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope Dt report Harian" sap:VirtualizedContainerService.HintSize="925,260" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Workbook="[wbReportHarian]" WorkbookPath="[in_strPathFileReportHarian]">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do1 " sap:VirtualizedContainerService.HintSize="376,151" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[dtReportHarian]" DisplayName="Read Range dt Report Harian" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" Range="A1" SheetName="Sheet1" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+    </ui:ExcelApplicationScope>
+    <ui:ReadRange AddHeaders="True" DataTable="[dtMasterMappingTTT]" DisplayName="Read Range Master &quot;Mapping TTT Delivery&quot;" sap:VirtualizedContainerService.HintSize="925,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="A1" SheetName="Mapping TTT Delivery" WorkbookPath="[path.Combine(in_dictConfigUser(&quot;Path_Master&quot;).ToString,in_dictConfigIT(&quot;FileMaster&quot;).ToString)]" />
+    <ui:ReadRange AddHeaders="True" DataTable="[dtMasterAddATT]" DisplayName="Read Range Master &quot;Add ATT&quot;" sap:VirtualizedContainerService.HintSize="925,87" sap2010:WorkflowViewState.IdRef="ReadRange_2" Range="A1" SheetName="Add ATT" WorkbookPath="[path.Combine(in_dictConfigUser(&quot;Path_Master&quot;).ToString,in_dictConfigIT(&quot;FileMaster&quot;).ToString)]" />
+    <If Condition="[not dtReportHarian.Columns.Contains(&quot;Sumber Data&quot;)]" DisplayName="If Cek Kolom Sumber Data" sap:VirtualizedContainerService.HintSize="925,745" sap2010:WorkflowViewState.IdRef="If_3">
+      <If.Then>
+        <ui:ExcelApplicationScope Password="{x:Null}" WorkbookPath="{x:Null}" DisplayName="Excel Application Scope" ExistingWorkbook="[wbReportHarian]" sap:VirtualizedContainerService.HintSize="560,597" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do 2" sap:VirtualizedContainerService.HintSize="526,488" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ExcelWriteCell Cell="[Convert.ToChar( dtReportHarian.Columns.Count+65).ToString+&quot;1&quot;]" DisplayName="Write Cell &quot;Sumber Data&quot;" sap:VirtualizedContainerService.HintSize="484,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="Sheet1" Text="Sumber Data" />
+                <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Sumber Data" DataTable="[dtReportHarian]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
+                <If Condition="[not dtReportHarian.rows.Count=0]" DisplayName="If Cek Jumlah Data Report Harian" sap:VirtualizedContainerService.HintSize="484,207" sap2010:WorkflowViewState.IdRef="If_2">
+                  <If.Then>
+                    <Assign DisplayName="Assign nilai pada kolom &quot;Sumber Data&quot; menjadi &quot;File Request&quot;" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="sd:DataTable">[dtReportHarian]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="sd:DataTable">[dtReportHarian.AsEnumerable.Select(Function (x) dtReportHarian.Clone.LoadDataRow(x.ItemArray.Take(20).Concat({if(string.IsNullOrEmpty(x(20).ToString),"File Request",x(20).ToString)}).Concat(x.ItemArray.Skip(21).ToArray).ToArray,False)).CopyToDataTable]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </If.Then>
+                </If>
+              </Sequence>
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+        </ui:ExcelApplicationScope>
+      </If.Then>
+    </If>
+    <If Condition="[not dtReportHarian.AsEnumerable.Any(function(r) r(&quot;Sumber Data&quot;).ToString.Contains(&quot;Learning History&quot;))]" DisplayName="If Cek Kolom Sumber Data dan Ada Nilai Learning History" sap:VirtualizedContainerService.HintSize="925,623" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence DisplayName="Sequence 1" sap:VirtualizedContainerService.HintSize="426,475" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:DeleteFileX DisplayName="Delete File Learning History.csv" sap:VirtualizedContainerService.HintSize="384,79" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[path.Combine(in_dictConfigUser(&quot;Path_To_Do&quot;).ToString,in_dictConfigIt(&quot;FileLearningHistory&quot;).ToString)]" />
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke FFL_Download_Report_Learning_History workflow" sap:VirtualizedContainerService.HintSize="384,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="FFL\FFL_Download_Report_Learning_History.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strProjectName">[in_strProjectName]</InArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtMasterMappingTTT">[dtMasterMappingTTT]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfigUser">[in_dictConfigUser]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfigIT">[in_dictConfigIT]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke FFL_Copy_Data_Learning_History workflow" sap:VirtualizedContainerService.HintSize="384,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="FFL\FFL_Copy_Data_Learning_History.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfigUser">[in_dictConfigUser]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfigIT">[in_dictConfigIT]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strProjectName">[in_strProjectName]</InArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtReportHarian">[dtReportHarian]</InOutArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtMasterMappingTTT">[dtMasterMappingTTT]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </If.Then>
+    </If>
+    <ui:ExcelApplicationScope Password="{x:Null}" WorkbookPath="{x:Null}" DisplayName="Excel Application Scope Report Harian Process " ExistingWorkbook="[wbReportHarian]" sap:VirtualizedContainerService.HintSize="925,288" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do 3" sap:VirtualizedContainerService.HintSize="376,179" sap2010:WorkflowViewState.IdRef="Sequence_21">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelWriteRange AddHeaders="True" DataTable="[DtReportHarian]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Sheet1" StartingCell="A1" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+    </ui:ExcelApplicationScope>
+    <If Condition="[(not dtReportHarian.RowCount=0) and dtReportHarian.AsEnumerable.Any(function (r) string.IsNullOrEmpty(r(&quot;Input NIP&quot;).ToString) and r(&quot;Sumber Data&quot;).ToString.ToLower.Trim.Equals(&quot;Learning History&quot;.ToLower.Trim))]" DisplayName="If Ada Row Kosong di kolom Input NIP" sap:VirtualizedContainerService.HintSize="925,623" sap2010:WorkflowViewState.IdRef="If_4">
+      <If.Then>
+        <Sequence DisplayName="Sequence 2" sap:VirtualizedContainerService.HintSize="426,475" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:DeleteFileX DisplayName="Delete File Account Data.csv" sap:VirtualizedContainerService.HintSize="384,79" sap2010:WorkflowViewState.IdRef="DeleteFileX_2" Path="[path.Combine(in_dictConfigUser(&quot;Path_To_Do&quot;).ToString,in_dictConfigIt(&quot;FileAccountData&quot;).ToString)]" />
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke FFL_Handling_Session_Timeout_Aplikasi_myDevelopment workflow 1" sap:VirtualizedContainerService.HintSize="384,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="FFL\FFL_Handling_Session_Timeout_Aplikasi_myDevelopment.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strProjectName">[in_strProjectName]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfigMail">[in_dictConfigMail]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfigUser">[in_dictConfigUser]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfigIT">[in_dictConfigIT]</InArgument>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolUnattended">[in_boolUnattended]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictconfigAsset">[in_dictConfigAsset]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke FFL_Download_Report_Account_Data workflow" sap:VirtualizedContainerService.HintSize="384,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="FFL\FFL_Download_Report_Account_Data.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strProjectName">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strProjectName" />
+              </InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfigUser">
+                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_dictConfigUser" />
+              </InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfigIT">
+                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_dictConfigIT" />
+              </InArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtReportHarian">
+                <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtReportHarian" />
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </If.Then>
+    </If>
+    <If Condition="[(not dtReportHarian.RowCount=0) and dtReportHarian.AsEnumerable.Any(function (r) string.IsNullOrEmpty(r(&quot;Data Instruktur&quot;).ToString)  and r(&quot;Sumber Data&quot;).ToString.ToLower.Trim.Equals(&quot;Learning History&quot;.ToLower.Trim))]" DisplayName="If Ada Row Kosong di kolom Data Instruktur" sap:VirtualizedContainerService.HintSize="925,260" sap2010:WorkflowViewState.IdRef="If_5">
+      <If.Then>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke FFL_Copy_Data_Account_Data workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="FFL\FFL_Copy_Data_Account_Data.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_strProjectName">[in_strProjectName]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfigIT">[in_dictConfigIT]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfigUser">[in_dictConfigUser]</InArgument>
+            <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtReportHarian">[dtReportHarian]</InOutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </If.Then>
+    </If>
+    <If Condition="[in_dictConfigIT(&quot;Popup_Pause&quot;).ToString.Trim.ToLower.Contains(&quot;yes&quot;)]" DisplayName="If sit " sap:VirtualizedContainerService.HintSize="925,232" sap2010:WorkflowViewState.IdRef="If_13">
+      <If.Then>
+        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box Mod SIT" sap:VirtualizedContainerService.HintSize="334,84" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Wait pop up Session Timed Out&quot;]" />
+      </If.Then>
+    </If>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke FFL_Handling_Session_Timeout_Aplikasi_myDevelopment workflow" sap:VirtualizedContainerService.HintSize="925,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="FFL\FFL_Handling_Session_Timeout_Aplikasi_myDevelopment.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strProjectName">[in_strProjectName]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfigMail">[in_dictConfigMail]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfigUser">[in_dictConfigUser]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfigIT">[in_dictConfigIT]</InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolUnattended">[in_boolUnattended]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictconfigAsset">[in_dictConfigAsset]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke FFL_Proses_Request_by_Action workflow" sap:VirtualizedContainerService.HintSize="925,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="FFL\FFL_Proses_Request_by_Action.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strProjectName">[in_strProjectName]</InArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtReportHarian">[dtReportHarian]</InOutArgument>
+        <InOutArgument x:TypeArguments="ui:WorkbookApplication" x:Key="io_wbReportHarian">[wbReportHarian]</InOutArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtMasterAddATT">[dtMasterAddATT]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke LogoutMyDevelopement workflow" sap:VirtualizedContainerService.HintSize="925,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Reusable\LogoutMyDevelopement.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strProjectName">[in_strProjectName]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:ExcelApplicationScope Password="{x:Null}" WorkbookPath="{x:Null}" DisplayName="Excel Application Scope Rapihkan Kolom Row" ExistingWorkbook="[wbReportHarian]" sap:VirtualizedContainerService.HintSize="925,288" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" InstanceCachePeriod="3000">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,179" sap2010:WorkflowViewState.IdRef="Sequence_18">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="Data\Vba\AutoFit.txt" DisplayName="Invoke VBA FiT Row Collumn" EntryMethodName="AutoFit" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeVBA_1" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+    </ui:ExcelApplicationScope>
+    <ui:ExcelCloseWorkbook DisplayName="Close Workbook " sap:VirtualizedContainerService.HintSize="925,59" sap2010:WorkflowViewState.IdRef="ExcelCloseWorkbook_1" Workbook="[wbReportHarian]" />
+    <Sequence DisplayName="Sequence Memindahkan File di To Do ke Folder Done" sap:VirtualizedContainerService.HintSize="925,1102" sap2010:WorkflowViewState.IdRef="Sequence_7">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If sap2010:Annotation.AnnotationText="Pindahkan seluruh File di [Path_To_Do] ke Sub Folder Harian di [Path_Done]:&#xA;&#xA;[Path_Done]\[ddMMyyyy], di mana [ddMMyyyy] merupakan tanggal RPA dijalankan" Condition="[not Directory.Exists(Path.Combine( in_dictConfigUser(&quot;Path_Done&quot;).ToString, now.ToString(&quot;ddMMyyyy&quot;)))]" DisplayName="If - Sub Folder [ddMMyyyy]?" sap:VirtualizedContainerService.HintSize="521,525" sap2010:WorkflowViewState.IdRef="If_7">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence DisplayName="Buat Folder - [ddMMyyyy]" sap:VirtualizedContainerService.HintSize="376,320" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <xl:Write_Log DisplayName="Write Log Create Folder" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Write_Log_3" LogType="Info" Message="[strXamlName + &quot; : Create Folder &quot; + Path.Combine(in_dictConfigUser(&quot;Path_Done&quot;).ToString, now.ToString(&quot;ddMMyyyy&quot;))]" ProjectName="[in_strProjectName]" />
+            <ui:CreateDirectory ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="1. RPA create Sub Folder [ddMMyyyy] sesuai tanggal RPA dijalankan.&#xA;&#xA;2. RPA menjalankan task &quot;Memindahkan File di To Do ke Folder Done.&quot;" DisplayName="Create Folder - [ddMMyyyy]" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[Path.Combine(in_dictConfigUser(&quot;Path_Done&quot;).ToString, now.ToString(&quot;ddMMyyyy&quot;))]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CreateDirectory>
+          </Sequence>
+        </If.Then>
+      </If>
+      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Pindahkan seluruh File di [Path_To_Do] ke Sub Folder Harian di [Path_Done]:&#xA;&#xA;[Path_Done]\[ddMMyyyy], di mana [ddMMyyyy] merupakan tanggal RPA dijalankan" DisplayName="For Each - Pindahkan seluruh File di [Path_To_Do] ke Sub Folder Harian di [Path_Done]" sap:VirtualizedContainerService.HintSize="521,445" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Directory.GetFiles( in_dictConfigUser(&quot;Path_To_Do&quot;).ToString)]">
+        <ui:ForEach.Body>
+          <ActivityAction x:TypeArguments="x:String">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:String" Name="strFile" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Body - Pindahkan seluruh File di [Path_To_Do] ke Sub Folder Harian di [Path_Done]" sap:VirtualizedContainerService.HintSize="426,249" sap2010:WorkflowViewState.IdRef="Sequence_9">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:MoveFile ContinueOnError="{x:Null}" Destination="[Path.Combine(in_dictConfigUser(&quot;Path_Done&quot;).ToString, now.ToString(&quot;ddMMyyyy&quot;), path.GetFileName(strFile))]" DisplayName="Move File - Pindahkan seluruh File di [Path_To_Do] ke Sub Folder Harian di [Path_Done]" sap:VirtualizedContainerService.HintSize="384,157" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[strFile]" />
+            </Sequence>
+          </ActivityAction>
+        </ui:ForEach.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:ForEach>
+    </Sequence>
+    <Sequence sap2010:Annotation.AnnotationText="Mengirimkan email DoneProcess sesuai config pada sheet MailIT&#xA;&#xA;RPA akan mencatat nilai pada kolom &quot;NIP&quot; jika nilai pada kolom &quot;Input NIP&quot; adalah &quot;Tidak ditemukan&quot;&#xA;atau&#xA;RPA akan menatat nilai pada kolom &quot;Nama&quot; jika nilai pada kolom &quot;Data Instruktur&quot; adalah &quot;Tidak lengkap&quot;&#xA;&#xA;Note:&#xA;- Nilai &quot;Tidak ditemukan&quot; atau &quot;Tidak lengkap&quot; dapat berjumlah &gt;1 row&#xA;- Jika terdapat &gt;1 row yang memiliki nilai sama pada kolom &quot;NIP&quot; atau &quot;Nama&quot;, maka RPA hanya akan mencatat salah satunya" DisplayName="Mengirimkan email DoneProcess sesuai config pada sheet MailIT" sap:VirtualizedContainerService.HintSize="925,3694" sap2010:WorkflowViewState.IdRef="Sequence_14">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="strTemp" />
+        <Variable x:TypeArguments="x:Int32" Name="intIndex" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:FilterDataTable DataTable="[dtReportHarian]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="883,160" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtReportHarian]" SelectColumnsMode="Keep">
+        <ui:FilterDataTable.Filters>
+          <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+            <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+              <ui:FilterOperationArgument.Column>
+                <InArgument x:TypeArguments="x:String">["Sumber Data"]</InArgument>
+              </ui:FilterOperationArgument.Column>
+              <ui:FilterOperationArgument.Operand>
+                <InArgument x:TypeArguments="x:String">["Learning History"]</InArgument>
+              </ui:FilterOperationArgument.Operand>
+            </ui:FilterOperationArgument>
+          </scg:List>
+        </ui:FilterDataTable.Filters>
+        <ui:FilterDataTable.SelectColumns>
+          <scg:List x:TypeArguments="InArgument" Capacity="4">
+            <x:Null />
+          </scg:List>
+        </ui:FilterDataTable.SelectColumns>
+      </ui:FilterDataTable>
+      <Assign sap2010:Annotation.AnnotationText="[Keterangan] bersifat opsional, jika tidak ada kondisi yang memenuhi, maka variabel tersebut akan kosong." DisplayName="Assign - strtemp kosong" sap:VirtualizedContainerService.HintSize="883,117" sap2010:WorkflowViewState.IdRef="Assign_3">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[strTemp]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">
+            <Literal x:TypeArguments="x:String" Value="" />
+          </InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+      <If Condition="[(From s In dtReportHarian.AsEnumerable&#xA;Where (s.Item(&quot;Input NIP&quot;).ToString.Trim.ToLower = &quot;Tidak ditemukan&quot;.ToLower)&#xA;Select s.Item(&quot;NIP&quot;)).ToList.Count &gt; 0]" DisplayName="If - kolom &quot;Input NIP&quot; adalah &quot;Tidak ditemukan&quot;?" sap:VirtualizedContainerService.HintSize="883,1378" sap2010:WorkflowViewState.IdRef="If_8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence DisplayName="kolom &quot;Input NIP&quot; adalah &quot;Tidak ditemukan&quot;" sap:VirtualizedContainerService.HintSize="738,1226" sap2010:WorkflowViewState.IdRef="Sequence_11">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="scg:List(x:String)" Name="listNip1" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <xl:Write_Log DisplayName="Write Log kolom &quot;Input NIP&quot; adalah &quot;Tidak ditemukan&quot;" sap:VirtualizedContainerService.HintSize="696,22" sap2010:WorkflowViewState.IdRef="Write_Log_4" LogType="Info" Message="[strXamlName + &quot; : kolom 'Input NIP' adalah 'Tidak ditemukan' = &quot; +&#xA;(From s In dtReportHarian.AsEnumerable&#xA;Where (s.Item(&quot;Input NIP&quot;).ToString.Trim = &quot;Tidak ditemukan&quot;)&#xA;Select s.Item(&quot;NIP&quot;)).ToList.Count.ToString]" ProjectName="[in_strProjectName]" />
+            <ui:MultipleAssign sap2010:Annotation.AnnotationText="Jika terdapat kondisi seperti di atas, maka RPA akan menuliskan variabel [Keterangan] menjadi:&#xA;Note:&#xA;&#xA;Berikut merupakan daftar NIP yang tidak ditemukan pada Report Account Data di aplikasi myDevelopment:&#xA;[No]. [NIP]" DisplayName="Multiple Assign - kolom &quot;Input NIP&quot; adalah &quot;Tidak ditemukan&quot;" sap:VirtualizedContainerService.HintSize="696,248" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+              <ui:MultipleAssign.AssignOperations>
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[strTemp]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">Berikut merupakan daftar NIP yang tidak ditemukan pada Report Account Data di aplikasi myDevelopment:</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:Int32">[intIndex]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:Int32">1</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                </scg:List>
+              </ui:MultipleAssign.AssignOperations>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:MultipleAssign>
+            <Assign DisplayName="Assign List NIP 1" sap:VirtualizedContainerService.HintSize="696,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:List(x:String)">[listNip1]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:List(x:String)">[New List(of string)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each -  kolom &quot;Input NIP&quot; adalah &quot;Tidak ditemukan&quot;" sap:VirtualizedContainerService.HintSize="696,684" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[(From s In dtReportHarian.AsEnumerable&#xA;Where (s.Item(&quot;Input NIP&quot;).ToString.Trim.ToLower = &quot;Tidak ditemukan&quot;.ToLower)&#xA;Select  If( Not String.IsNullOrEmpty(s.Item(&quot;NIP&quot;).ToString),s.Item(&quot;NIP&quot;),&quot;-&quot;)).ToList]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="x:String">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:String" Name="NIP" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body - tambah no dan nip " sap:VirtualizedContainerService.HintSize="660,556" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If Condition="[(not NIP=&quot;-&quot;) and (not listNip1.Contains(NIP))]" DisplayName="If nip = &quot;-&quot;" sap:VirtualizedContainerService.HintSize="618,464" sap2010:WorkflowViewState.IdRef="If_11">
+                      <If.Then>
+                        <Sequence DisplayName="Sequence 11" sap:VirtualizedContainerService.HintSize="473,316" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:MultipleAssign sap2010:Annotation.AnnotationText="[No]. [NIP]" DisplayName="Multiple Assign - Tambah [No]. [NIP]" sap:VirtualizedContainerService.HintSize="431,162" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                            <ui:MultipleAssign.AssignOperations>
+                              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                                  <ui:AssignOperation.To>
+                                    <OutArgument x:TypeArguments="x:String">[strTemp]</OutArgument>
+                                  </ui:AssignOperation.To>
+                                  <ui:AssignOperation.Value>
+                                    <InArgument x:TypeArguments="x:String">[strTemp + vbCrLf + intIndex.ToString + ". " + NIP]</InArgument>
+                                  </ui:AssignOperation.Value>
+                                </ui:AssignOperation>
+                                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                                  <ui:AssignOperation.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[intIndex]</OutArgument>
+                                  </ui:AssignOperation.To>
+                                  <ui:AssignOperation.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[intIndex+1]</InArgument>
+                                  </ui:AssignOperation.Value>
+                                </ui:AssignOperation>
+                              </scg:List>
+                            </ui:MultipleAssign.AssignOperations>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:MultipleAssign>
+                          <AddToCollection x:TypeArguments="x:String" Collection="[listNip1]" DisplayName="Add To Collection NIP 1" sap:VirtualizedContainerService.HintSize="431,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1" Item="[NIP]" />
+                        </Sequence>
+                      </If.Then>
+                    </If>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ForEach>
+          </Sequence>
+        </If.Then>
+      </If>
+      <If Condition="[(From s In dtReportHarian.AsEnumerable&#xA;Where (s.Item(&quot;Data Instruktur&quot;).ToString.Trim.ToLower = &quot;Tidak lengkap&quot;.ToLower)&#xA;Select s.Item(&quot;NIP&quot;)).ToList.Count &gt; 0]" DisplayName="If - kolom &quot;Data Instruktur&quot; adalah &quot;Tidak lengkap&quot;?" sap:VirtualizedContainerService.HintSize="883,1318" sap2010:WorkflowViewState.IdRef="If_9">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence DisplayName="kolom &quot;Data Instruktur&quot; adalah &quot;Tidak lengkap&quot;" sap:VirtualizedContainerService.HintSize="738,1166" sap2010:WorkflowViewState.IdRef="Sequence_13">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="scg:List(x:String)" Name="listNip2" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <xl:Write_Log DisplayName="Write Log kolom &quot;Data Instruktur&quot; adalah &quot;Tidak lengkap&quot;" sap:VirtualizedContainerService.HintSize="696,22" sap2010:WorkflowViewState.IdRef="Write_Log_5" LogType="Info" Message="[strXamlName + &quot; : kolom 'Data Instruktur' adalah 'Tidak lengkap' = &quot; +&#xA;(From s In dtReportHarian.AsEnumerable&#xA;Where (s.Item(&quot;Data Instruktur&quot;).ToString.Trim = &quot;Tidak lengkap&quot;)&#xA;Select s.Item(&quot;NIP&quot;)).ToList.Count.ToString]" ProjectName="[in_strProjectName]" />
+            <ui:MultipleAssign sap2010:Annotation.AnnotationText="Berikut merupakan daftar NIP yang datanya tidak lengkap pada File Account Data:&#xA;[No]. [NIP]" DisplayName="Multiple Assign - &quot;Data Instruktur&quot; adalah &quot;Tidak lengkap&quot;" sap:VirtualizedContainerService.HintSize="696,188" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+              <ui:MultipleAssign.AssignOperations>
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[strTemp]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[if(strTemp="","Berikut merupakan daftar NIP yang datanya tidak lengkap pada File Account Data:", strTemp+vbcrlf+vbcrlf+"Berikut merupakan daftar NIP yang datanya tidak lengkap pada File Account Data:")]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:Int32">[intIndex]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:Int32">1</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                </scg:List>
+              </ui:MultipleAssign.AssignOperations>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:MultipleAssign>
+            <Assign DisplayName="Assign List NIP 2" sap:VirtualizedContainerService.HintSize="696,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:List(x:String)">[listNip2]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:List(x:String)">[New List(of string)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each -  kolom &quot;Data Instruktur&quot; adalah &quot;Tidak lengkap&quot;" sap:VirtualizedContainerService.HintSize="696,684" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[(From s In dtReportHarian.AsEnumerable&#xA;Where (s.Item(&quot;Data Instruktur&quot;).ToString.Trim.ToLower = &quot;Tidak lengkap&quot;.ToLower)&#xA;Select If( Not String.IsNullOrEmpty(s.Item(&quot;NIP&quot;).ToString),s.Item(&quot;NIP&quot;),&quot;-&quot;)).ToList]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="x:String">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:String" Name="NIP" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="660,556" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If Condition="[(not NIP=&quot;-&quot;) and (not listNip2.Contains(NIP))]" DisplayName="If If nip = &quot;-&quot;" sap:VirtualizedContainerService.HintSize="618,464" sap2010:WorkflowViewState.IdRef="If_12">
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="473,316" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:MultipleAssign sap2010:Annotation.AnnotationText="[No]. [NIP]" DisplayName="Multiple Assign - Tambah [No]. [NIP] 2" sap:VirtualizedContainerService.HintSize="431,162" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+                            <ui:MultipleAssign.AssignOperations>
+                              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                                  <ui:AssignOperation.To>
+                                    <OutArgument x:TypeArguments="x:String">[strTemp]</OutArgument>
+                                  </ui:AssignOperation.To>
+                                  <ui:AssignOperation.Value>
+                                    <InArgument x:TypeArguments="x:String">[strTemp + vbCrLf + intIndex.ToString + ". " + NIP]</InArgument>
+                                  </ui:AssignOperation.Value>
+                                </ui:AssignOperation>
+                                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                                  <ui:AssignOperation.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[intIndex]</OutArgument>
+                                  </ui:AssignOperation.To>
+                                  <ui:AssignOperation.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[intIndex+1]</InArgument>
+                                  </ui:AssignOperation.Value>
+                                </ui:AssignOperation>
+                              </scg:List>
+                            </ui:MultipleAssign.AssignOperations>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:MultipleAssign>
+                          <AddToCollection x:TypeArguments="x:String" Collection="[listNip2]" DisplayName="Add To Collection NIP 2" sap:VirtualizedContainerService.HintSize="431,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_2" Item="[NIP]" />
+                        </Sequence>
+                      </If.Then>
+                    </If>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+            </ui:ForEach>
+          </Sequence>
+        </If.Then>
+      </If>
+      <xl:Write_Log DisplayName="Write Log email DoneProcess" sap:VirtualizedContainerService.HintSize="883,22" sap2010:WorkflowViewState.IdRef="Write_Log_6" LogType="Info" Message="[strXamlName + &quot; : Kirim email DoneProcess (&quot; + in_dictConfigMailIT(&quot;To Done Process&quot;).ToString + &quot; | &quot; + in_dictConfigMailIT(&quot;Cc Done Process&quot;).ToString + &quot;) &amp; Notif Notepad&quot;]" ProjectName="[in_strProjectName]" />
+      <If Condition="[dtReportHarian.RowCount=0 or (not dtReportHarian.AsEnumerable.Any(function (r) r(&quot;Sumber Data&quot;).ToString.ToLower.Trim.Contains(&quot;Learning History&quot;.ToLower.Trim)))]" DisplayName="If Data Kosong" sap:VirtualizedContainerService.HintSize="883,260" sap2010:WorkflowViewState.IdRef="If_10">
+        <If.Then>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SendEmailNotification workflow NoData" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Reusable\SendEmailNotification.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strProjectName">[in_strProjectName]</InArgument>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolUnattended">[in_boolUnattended]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictConfigIT">[in_dictConfigIT]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strSubjectEmail">[in_dictConfigMail("Subject NoData").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strToEmail">[in_dictConfigMail("To NoData").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strCcEmail">[in_dictConfigMail("Cc NoData").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strBodyEmail">[in_dictConfigMail("Body NoData").ToString]</InArgument>
+              <InArgument x:TypeArguments="scg:IEnumerable(x:String)" x:Key="in_arrAttachMail" />
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </If.Then>
+        <If.Else>
+          <xr:Send_Email_Unattended_or_Attended BCCEmail="{x:Null}" dictConfigIT="{x:Null}" sap2010:Annotation.AnnotationText="Mengirimkan email DoneProcess sesuai config pada sheet MailIT" BodyEmail="[in_dictConfigMailIT(&quot;Body Done Process&quot;).ToString.Replace(&quot;[Keterangan]&quot;, strTemp)]" CCEmail="[in_dictConfigMailIT(&quot;Cc Done Process&quot;).ToString]" DisplayName="Send Email - DoneProcess" sap:VirtualizedContainerService.HintSize="200,79" sap2010:WorkflowViewState.IdRef="Send_Email_Unattended_or_Attended_1" IsUnattended="[in_boolUnattended]" PathAttachment="[Path.Combine(in_dictConfigUser(&quot;Path_Done&quot;).ToString, now.ToString(&quot;ddMMyyyy&quot;), path.GetFileName(in_strPathFileReportHarian))]" SubjectEmail="[in_dictConfigMailIT(&quot;Subject Done Process&quot;).ToString]" ToEmail="[in_dictConfigMailIT(&quot;To Done Process&quot;).ToString]" lsBodyHtml="False">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </xr:Send_Email_Unattended_or_Attended>
+        </If.Else>
+      </If>
+    </Sequence>
+    <xl:Write_Log DisplayName="Write Log Prosess  End" sap:VirtualizedContainerService.HintSize="925,22" sap2010:WorkflowViewState.IdRef="Write_Log_2" LogType="Info" Message="[strXamlName +&quot; : End&quot;]" ProjectName="[in_strProjectName]" />
+  </Sequence>
+</Activity>

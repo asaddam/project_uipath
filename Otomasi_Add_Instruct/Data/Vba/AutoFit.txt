@@ -1,0 +1,21 @@
+Function AutoFit()
+    On Error GoTo ErrorHandler
+
+    Dim iRange As Range
+    Dim iCells As Range
+    Set iRange = ThisWorkbook.ActiveSheet.UsedRange
+    For Each iCells In iRange
+        iCells.BorderAround _
+        LineStyle:=xlContinuous, _
+        Weight:=xlThin
+    Next iCells 
+
+    Cells.Select 
+    Selection.Columns.AutoFit
+    Selection.Rows.AutoFit
+      
+    Exit Function
+ErrorHandler:
+    AutoFit= "Error in VBA : " & Err.Description
+    Exit Function
+End Function
