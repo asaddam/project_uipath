@@ -1,0 +1,16 @@
+Sub AutoFit(rangeColumn As String)
+   Columns(rangeColumn).Select
+   Columns(rangeColumn).EntireColumn.AutoFit
+   Range("A1").Select
+End Sub
+
+Sub AllBorders(sheet As String, range As String)
+    Dim rng As Range
+
+    Set rng = Sheets(sheet).Range(range)
+
+    With rng.Borders
+        .LineStyle = xlContinuous
+        .Weight = xlThin
+    End With
+End Sub

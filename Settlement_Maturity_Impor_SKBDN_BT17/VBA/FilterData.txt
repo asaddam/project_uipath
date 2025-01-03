@@ -1,0 +1,24 @@
+Sub FilterData(namaSheet As String, rangeData As String, tanggal As String, kolomOblg As Integer, kolomCurr As Integer, kolomMaturityDate As Integer)
+    Sheets(namaSheet).Select
+    Range("A1").Select
+    Selection.AutoFilter
+    ActiveSheet.Range(rangeData).AutoFilter Field:=kolomOblg, Criteria1:="=ACK", _
+        Operator:=xlOr, Criteria2:="=ACQ"
+    ActiveSheet.Range(rangeData).AutoFilter Field:=kolomCurr, Criteria1:="IDR"
+    ActiveSheet.Range(rangeData).AutoFilter Field:=kolomMaturityDate, Operator:= _
+        xlFilterValues, Criteria2:=Array(2, tanggal)
+End Sub
+
+Sub UnFilterData1(namaSheet As String)
+    Sheets(namaSheet).Select
+    Range("A1").Select
+    Selection.AutoFilter
+End Sub
+
+Sub UnFilterData(namaSheet As String)
+    Sheets(namaSheet).Select
+    Cells.Select
+    Selection.EntireRow.Hidden = False
+    Range("A1").Select
+    Selection.AutoFilter
+End Sub

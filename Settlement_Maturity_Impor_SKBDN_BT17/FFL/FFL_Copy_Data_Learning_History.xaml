@@ -1,0 +1,247 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="FFL_Copy_Data_Learning_History" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:aw="clr-namespace:Alphabet.Workflow;assembly=GetXamlFileNameActivity" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:xl="clr-namespace:XAS_Custom.Logging;assembly=XAS_Package">
+  <x:Members>
+    <x:Property Name="in_dictConfigUser" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_dictConfigIT" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_strProjectName" Type="InArgument(x:String)" />
+    <x:Property Name="io_dtReportHarian" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="in_dtMasterMappingTTT" Type="InArgument(sd:DataTable)" />
+  </x:Members>
+  <this:FFL_Copy_Data_Learning_History.in_dtMasterMappingTTT>
+    <InArgument x:TypeArguments="sd:DataTable" />
+  </this:FFL_Copy_Data_Learning_History.in_dtMasterMappingTTT>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1459,2949</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>FFL_Copy_Data_Learning_History_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="64">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>Alphabet.Workflow</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>XAS_Custom.Logging</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="46">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>GetXamlFileNameActivity</AssemblyReference>
+      <AssemblyReference>XAS_Package</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices.RuntimeInformation</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="FFL_Copy_Data_Learning_History" sap:VirtualizedContainerService.HintSize="605,2884" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strXamlName" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtFileLearningHistory" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtFilter" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <aw:GetXamlFileName DisplayName="Get xaml file name" sap:VirtualizedContainerService.HintSize="563,22" sap2010:WorkflowViewState.IdRef="GetXamlFileName_1" workflowName="[strXamlName]" />
+    <xl:Write_Log DisplayName="Write Log Prosess Start" sap:VirtualizedContainerService.HintSize="563,22" sap2010:WorkflowViewState.IdRef="Write_Log_1" LogType="Info" Message="[strXamlName +&quot; : Start&quot;]" ProjectName="[in_strProjectName]" />
+    <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[dtFileLearningHistory]" Delimitator="Comma" DisplayName="Read CSV FileLearningHistory" FilePath="[path.Combine(in_dictConfigUser(&quot;Path_To_Do&quot;).ToString, in_dictConfigIT(&quot;FileLearningHistory&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="563,152" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" />
+    <Sequence DisplayName="Filter Entity ID" sap:VirtualizedContainerService.HintSize="563,1187" sap2010:WorkflowViewState.IdRef="Sequence_6">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap2010:Annotation.AnnotationText="Filter kolom &quot;Entity ID&quot;, &quot;Completion Date&quot;, dan &quot;Completion Status&quot; pada File Learning History dengan ketentuan" DisplayName="Assign Filter Entity ID,Completion Date,Completion Status" sap:VirtualizedContainerService.HintSize="521,121" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[dtFilter]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[If(dtFileLearningHistory.AsEnumerable.Any(Function (x)  in_dtMasterMappingTTT.AsEnumerable.Any(Function (y) y("Item ID").ToString.Trim.Equals(x("Entity ID").ToString) And
+(( Date.ParseExact((x("Completion Date").ToString.Split(" "c)(0).ToString+" "+x("Completion Date").ToString.Split(" "c)(1).ToString+" "+x("Completion Date").ToString.Split(" "c)(2).ToString),"M/d/yyyy hh:mm tt",Nothing)&lt;=Now) And 
+( Date.ParseExact((x("Completion Date").ToString.Split(" "c)(0).ToString+" "+x("Completion Date").ToString.Split(" "c)(1).ToString+" "+x("Completion Date").ToString.Split(" "c)(2).ToString),"M/d/yyyy hh:mm tt",Nothing)&gt;=Now.AddDays(-1))) And
+(x("Completion Status").ToString.Equals("Passed") Or x("Completion Status").ToString.Equals("Completed")) )),
+dtFileLearningHistory.AsEnumerable.Where(Function (x) in_dtMasterMappingTTT.AsEnumerable.Any(Function (y) y("Item ID").ToString.Trim.Equals(x("Entity ID").ToString) And 
+(( Date.ParseExact((x("Completion Date").ToString.Split(" "c)(0).ToString+" "+x("Completion Date").ToString.Split(" "c)(1).ToString+" "+x("Completion Date").ToString.Split(" "c)(2).ToString),"M/d/yyyy hh:mm tt",Nothing)&lt;=Now) And 
+( Date.ParseExact((x("Completion Date").ToString.Split(" "c)(0).ToString+" "+x("Completion Date").ToString.Split(" "c)(1).ToString+" "+x("Completion Date").ToString.Split(" "c)(2).ToString),"M/d/yyyy hh:mm tt",Nothing)&gt;=Now.AddDays(-1))) And
+(x("Completion Status").ToString.Equals("Passed") Or x("Completion Status").ToString.Equals("Completed")))).CopyToDataTable.DefaultView.ToTable(False,{"User","Entity ID"}),
+dtFileLearningHistory.Clone
+)]</InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+      <If Condition="[not dtFilter.RowCount=0]" DisplayName="If Tidak terdapat data sesuai ketentuan filter" sap:VirtualizedContainerService.HintSize="521,934" sap2010:WorkflowViewState.IdRef="If_1">
+        <If.Then>
+          <Sequence DisplayName="Add Kolom Sesuai Dt Report Harian" sap:VirtualizedContainerService.HintSize="376,786" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="NIP" DataTable="[dtFilter]" DisplayName="Add Data Column NIP 1" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_13" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Item Id" DataTable="[dtFilter]" DisplayName="Add Data Column Item Id 1" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_14" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Tgl" DataTable="[dtFilter]" DisplayName="Add Data Column Tgl 1" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_15" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Proses" DataTable="[dtFilter]" DisplayName="Add Data Column proses 1" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_16" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Instructor Id" DataTable="[dtFilter]" DisplayName="Add Data Column Instructor 1" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_17" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Sumber Data" DataTable="[dtFilter]" DisplayName="Add Data Column sumber data 1" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_18" />
+            <Assign DisplayName="Assign Value Kolom Tambahan" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[dtFilter]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable">[dtFilter.AsEnumerable.Select(Function(r) dtFilter.Clone.LoadDataRow({r("User"),r("Entity ID"),r("User").ToString.PadLeft(8,"0"c),r("Entity ID"),datetime.Now.ToString("M/d/yyyy"),"Add Instructor ID","0330-"+r("User").ToString.PadLeft(8,"0"c),"Learning History"},False)).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:FilterDataTable DataTable="[dtFilter]" DisplayName="Filter Data Table Remove kolom " FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="334,160" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtFilter]" SelectColumnsMode="Remove">
+              <ui:FilterDataTable.Filters>
+                <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                  <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
+                </scg:List>
+              </ui:FilterDataTable.Filters>
+              <ui:FilterDataTable.SelectColumns>
+                <scg:List x:TypeArguments="InArgument" Capacity="4">
+                  <InArgument x:TypeArguments="x:String">["User"]</InArgument>
+                  <InArgument x:TypeArguments="x:String">["Entity ID"]</InArgument>
+                </scg:List>
+              </ui:FilterDataTable.SelectColumns>
+            </ui:FilterDataTable>
+            <ui:MergeDataTable Destination="[io_dtReportHarian]" DisplayName="Merge Data Table filter ke dt Report Harian" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="MergeDataTable_1" MissingSchemaAction="Add" Source="[dtFilter]" />
+          </Sequence>
+        </If.Then>
+      </If>
+    </Sequence>
+    <Sequence DisplayName="Filter Entity Title" sap:VirtualizedContainerService.HintSize="563,1187" sap2010:WorkflowViewState.IdRef="Sequence_8">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap2010:Annotation.AnnotationText="Filter kolom &quot;Entity Title&quot;, &quot;Completion Date&quot;, dan &quot;Completion Status&quot; pada File Learning History dengan ketentuan" DisplayName="Assign Filter Entity Title,Completion Date,Completion Status" sap:VirtualizedContainerService.HintSize="521,121" sap2010:WorkflowViewState.IdRef="Assign_3">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[dtFilter]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[If(dtFileLearningHistory.AsEnumerable.Any(Function (x)  (x("Entity Title").ToString.ToLower.Contains("TTT Content".ToLower) Or x("Entity Title").ToString.ToLower.Contains("TTF Content".ToLower)) And
+(( Date.ParseExact((x("Completion Date").ToString.Split(" "c)(0).ToString+" "+x("Completion Date").ToString.Split(" "c)(1).ToString+" "+x("Completion Date").ToString.Split(" "c)(2).ToString),"M/d/yyyy hh:mm tt",Nothing)&lt;=Now) And 
+( Date.ParseExact((x("Completion Date").ToString.Split(" "c)(0).ToString+" "+x("Completion Date").ToString.Split(" "c)(1).ToString+" "+x("Completion Date").ToString.Split(" "c)(2).ToString),"M/d/yyyy hh:mm tt",Nothing)&gt;=Now.AddDays(-1))) And
+(x("Completion Status").ToString.Equals("Passed") Or x("Completion Status").ToString.Equals("Completed")) ),
+dtFileLearningHistory.AsEnumerable.Where(Function (x) (x("Entity Title").ToString.ToLower.Contains("TTT Content".ToLower) Or x("Entity Title").ToString.ToLower.Contains("TTF Content".ToLower)) And 
+(( Date.ParseExact((x("Completion Date").ToString.Split(" "c)(0).ToString+" "+x("Completion Date").ToString.Split(" "c)(1).ToString+" "+x("Completion Date").ToString.Split(" "c)(2).ToString),"M/d/yyyy hh:mm tt",Nothing)&lt;=Now) And 
+( Date.ParseExact((x("Completion Date").ToString.Split(" "c)(0).ToString+" "+x("Completion Date").ToString.Split(" "c)(1).ToString+" "+x("Completion Date").ToString.Split(" "c)(2).ToString),"M/d/yyyy hh:mm tt",Nothing)&gt;=Now.AddDays(-1))) And
+(x("Completion Status").ToString.Equals("Passed") Or x("Completion Status").ToString.Equals("Completed")) ).CopyToDataTable.DefaultView.ToTable(False,{"User","Entity ID"}),
+dtFileLearningHistory.Clone
+)]</InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+      <If Condition="[not dtFilter.RowCount=0]" DisplayName="If Tidak terdapat data sesuai ketentuan filter Entity Title" sap:VirtualizedContainerService.HintSize="521,934" sap2010:WorkflowViewState.IdRef="If_2">
+        <If.Then>
+          <Sequence DisplayName="Add Kolom Sesuai Dt Report Harian Entity Title" sap:VirtualizedContainerService.HintSize="376,786" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="NIP" DataTable="[dtFilter]" DisplayName="Add Data Column nip" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_19" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Item Id" DataTable="[dtFilter]" DisplayName="Add Data Column item id" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_20" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Tgl" DataTable="[dtFilter]" DisplayName="Add Data Column tgl" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_21" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Proses" DataTable="[dtFilter]" DisplayName="Add Data Column proses" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_22" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Instructor Id" DataTable="[dtFilter]" DisplayName="Add Data Column instructor" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_23" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Sumber Data" DataTable="[dtFilter]" DisplayName="Add Data Column sumber data" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_24" />
+            <Assign DisplayName="Assign Value Kolom Tambahan Entity Title" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[dtFilter]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable">[dtFilter.AsEnumerable.Select(Function(r) dtFilter.Clone.LoadDataRow({r("User"),r("Entity ID"),r("User").ToString.PadLeft(8,"0"c),r("Entity ID"),datetime.Now.ToString("M/d/yyyy"),"Add ATT","0330-"+r("User").ToString.PadLeft(8,"0"c),"Learning History"},False)).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:FilterDataTable DataTable="[dtFilter]" DisplayName="Filter Data Table Remove kolom Entity Title " FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="334,160" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dtFilter]" SelectColumnsMode="Remove">
+              <ui:FilterDataTable.Filters>
+                <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                  <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
+                </scg:List>
+              </ui:FilterDataTable.Filters>
+              <ui:FilterDataTable.SelectColumns>
+                <scg:List x:TypeArguments="InArgument" Capacity="4">
+                  <InArgument x:TypeArguments="x:String">["User"]</InArgument>
+                  <InArgument x:TypeArguments="x:String">["Entity ID"]</InArgument>
+                </scg:List>
+              </ui:FilterDataTable.SelectColumns>
+            </ui:FilterDataTable>
+            <ui:MergeDataTable Destination="[io_dtReportHarian]" DisplayName="Merge Data Table filter ke dt Report Harian Entity Title" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="MergeDataTable_2" MissingSchemaAction="Add" Source="[dtFilter]" />
+          </Sequence>
+        </If.Then>
+      </If>
+    </Sequence>
+    <xl:Write_Log DisplayName="Write Log Prosess  End" sap:VirtualizedContainerService.HintSize="563,22" sap2010:WorkflowViewState.IdRef="Write_Log_2" LogType="Info" Message="[strXamlName +&quot; : End&quot;]" ProjectName="[in_strProjectName]" />
+  </Sequence>
+</Activity>

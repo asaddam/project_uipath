@@ -1,0 +1,14 @@
+Pastikan Folder : semua folder bisa diakses
+PathToDo
+PathReview
+PathBackup
+PathMasterData
+
+Pastikan File : semua file master bisa diakses
+PathMasterData >>> Daftar Cabang.xls, Master Config.xlsx
+
+Pastikan Aplikasi : Kalau mau get data dari TradeStats, pastikan isian form login TradeStats harus sesuai dengan radio button yang akan dipilih (bisa JTS/STS)
+
+Note Tambahan : 
+1. bisa lanjut run dari PathToDo dengan menyiapkan file Report_Akseptasi_[JTS/STS]_[yyyyMMdd].xls
+(yyyyMMdd = tanggal hari ini/tanggal running), JTS/STS disesuaikan dengan radio button yang akan dipilih
